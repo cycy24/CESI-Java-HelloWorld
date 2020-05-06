@@ -1,3 +1,9 @@
+/**
+	 * Description HelloWorldPerso
+	 *
+	 * @author Cyril Blondy
+	 * @version 0.1
+	 */
 public class HelloWorldPerso {
   // Définition de la fonction main
   public static void main(String[] args){
