@@ -1,4 +1,3 @@
-// Définition de la classe
 public class HelloWorld {
   // Définition de la fonction main
   public static void main(String[] arg){
