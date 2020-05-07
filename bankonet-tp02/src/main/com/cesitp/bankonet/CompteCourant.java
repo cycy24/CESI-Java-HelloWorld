@@ -57,4 +57,14 @@ public class CompteCourant {
         this.solde = this.solde-amount;
 
     }
+
+    @Override
+    public String toString() {
+        return "CompteCourant{" +
+                "numuero='" + numuero + '\'' +
+                ", intitule='" + intitule + '\'' +
+                ", solde=" + solde +
+                ", montantDecouvertAutorise=" + montantDecouvertAutorise +
+                '}';
+    }
 }
