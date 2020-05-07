@@ -1,6 +1,6 @@
 package com.cesitp.bankonet;
 
-public class Compte {
+public abstract class Compte {
 
     private String numuero ;
     private String intitule ;
@@ -45,6 +45,19 @@ public class Compte {
         }
 
     }
+
+    public void debiter(double amount){
+        if( isDebitAutorise(amount)) {
+            if (amount < 0) {
+                this.setSolde(this.getSolde() + amount);
+            } else {
+                this.setSolde(this.getSolde() - amount);
+            }
+        }
+
+    }
+
+    public abstract boolean isDebitAutorise(double amount);
 
     @Override
     public String toString() {

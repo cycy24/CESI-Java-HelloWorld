@@ -125,6 +125,6 @@ class CompteCourantTest {
 
     @AfterEach
     void tearDown() {
-        CompteCourant.setNbComptesCourant(0);
+        CompteCourant.initNbCompte();
     }
 }

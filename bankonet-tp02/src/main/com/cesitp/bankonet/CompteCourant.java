@@ -28,11 +28,21 @@ public class CompteCourant extends Compte {
 
 
     public void debiter(double amount){
-        if(amount<0){
-            this.setSolde(this.getSolde() + amount);
-        }else {
-            this.setSolde(this.getSolde() - amount);
+        if (this.isDebitAutorise(amount)) {
+            if (amount < 0) {
+                this.setSolde(this.getSolde() + amount);
+            } else {
+                this.setSolde(this.getSolde() - amount);
+            }
         }
+
+    }
+
+    public boolean isDebitAutorise(double amount){
+        if((this.getSolde() - amount ) > -montantDecouvertAutorise){
+            return true;
+        }
+        return false;
 
     }
 
@@ -40,8 +50,8 @@ public class CompteCourant extends Compte {
         return nbComptesCourant;
     }
 
-    public static void setNbComptesCourant(int nbComptesCourant) {
-        CompteCourant.nbComptesCourant = nbComptesCourant;
+    public static void initNbCompte(){
+        CompteCourant.nbComptesCourant = 0;
     }
 
     @Override

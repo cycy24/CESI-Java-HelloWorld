@@ -21,12 +21,13 @@ public class CompteEpargne extends Compte {
         this.tauxInteret = tauxInteret;
     }
 
-    public void debiter(double amount){
-        if(amount<0){
-            this.setSolde(this.getSolde() + amount);
-        }else {
-            this.setSolde(this.getSolde() - amount);
+
+
+    public boolean isDebitAutorise(double amount){
+        if((this.getSolde() - amount) > 0){
+            return true;
         }
+        return false;
 
     }
 
