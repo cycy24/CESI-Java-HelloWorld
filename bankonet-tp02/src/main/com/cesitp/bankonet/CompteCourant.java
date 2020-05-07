@@ -1,43 +1,20 @@
 package com.cesitp.bankonet;
 
-public class CompteCourant {
-    String numuero ;
-    String intitule ;
-    double solde ;
-    double montantDecouvertAutorise ;
-    static int nbComptesCourant ;
+public class CompteCourant extends Compte {
 
+    private double montantDecouvertAutorise ;
+    private static int nbComptesCourant ;
 
-    public CompteCourant(String numuero, String intitule, double solde, double montantDecouvertAutorise) {
-        this.numuero = numuero;
-        this.intitule = intitule;
-        this.solde = solde;
-        this.montantDecouvertAutorise = montantDecouvertAutorise;
+    public CompteCourant(String numuero, String intitule, double solde) {
+        super(numuero,intitule,solde);
         CompteCourant.nbComptesCourant++;
     }
 
-    public String getNumuero() {
-        return numuero;
-    }
+    public CompteCourant(String numuero, String intitule, double solde, double montantDecouvertAutorise) {
+        this(numuero, intitule, solde);
 
-    public void setNumuero(String numuero) {
-        this.numuero = numuero;
-    }
+        this.montantDecouvertAutorise = montantDecouvertAutorise;
 
-    public String getIntitule() {
-        return intitule;
-    }
-
-    public void setIntitule(String intitule) {
-        this.intitule = intitule;
-    }
-
-    public double getSolde() {
-        return solde;
-    }
-
-    public void setSolde(double solde) {
-        this.solde = solde;
     }
 
     public double getMontantDecouvertAutorise() {
@@ -48,23 +25,29 @@ public class CompteCourant {
         this.montantDecouvertAutorise = montantDecouvertAutorise;
     }
 
-    public void crediter(double amount){
-        this.solde = this.solde+amount;
+
+
+    public void debiter(double amount){
+        if(amount<0){
+            this.setSolde(this.getSolde() + amount);
+        }else {
+            this.setSolde(this.getSolde() - amount);
+        }
 
     }
 
-    public void debiter(double amount){
-        this.solde = this.solde-amount;
+    public static int getNbComptesCourant() {
+        return nbComptesCourant;
+    }
 
+    public static void setNbComptesCourant(int nbComptesCourant) {
+        CompteCourant.nbComptesCourant = nbComptesCourant;
     }
 
     @Override
     public String toString() {
-        return "CompteCourant{" +
-                "numuero='" + numuero + '\'' +
-                ", intitule='" + intitule + '\'' +
-                ", solde=" + solde +
-                ", montantDecouvertAutorise=" + montantDecouvertAutorise +
+        return super.toString() + '\n'+ "CompteCourant{" +
+                "montantDecouvertAutorise=" + montantDecouvertAutorise +
                 '}';
     }
 }
